@@ -52,6 +52,7 @@ class SpeechRecogManager {
 
         override fun onEndOfSpeech() {
             // 말하기 중지 시
+            Toast.makeText(MainActivity.context, "듣기 완료", Toast.LENGTH_SHORT).show()
         }
 
         override fun onError(error: Int) {
@@ -61,17 +62,6 @@ class SpeechRecogManager {
                         SampleDataManager.RecognitionResult.Result.ErrorCB,
                 null,
                         error))
-            }
-        }
-
-        override fun onResults(results: Bundle?) {
-            // 인식 결과 준비되었을 때
-            // (말한 단어가 리스트에 쌓여 인식 직전 준비 시)
-            resultListener?.let {
-                it.onResult(SampleDataManager.RecognitionResult(
-                        SampleDataManager.RecognitionResult.Result.ResultCB,
-                        getAllSpeechToText(results),
-                    -1))
             }
 
             /**
@@ -89,6 +79,17 @@ class SpeechRecogManager {
             ERROR_LANGUAGE_UNAVAILABLE = 13 : Requested language is supported, but not available currently (e.g. not downloaded yet)
             ERROR_CANNOT_CHECK_SUPPORT = 14 : The service does not allow to check for support
              */
+        }
+
+        override fun onResults(results: Bundle?) {
+            // 인식 결과 준비되었을 때
+            // (말한 단어가 리스트에 쌓여 인식 직전 준비 시)
+            resultListener?.let {
+                it.onResult(SampleDataManager.RecognitionResult(
+                        SampleDataManager.RecognitionResult.Result.ResultCB,
+                        getAllSpeechToText(results),
+                    -1))
+            }
         }
 
         override fun onPartialResults(partialResults: Bundle?) {

@@ -4,6 +4,7 @@
 - 2023.05 ~
 - Android Studio Electric Eel 2022.1.1 Patch 2
 - Android 12 Device test
+- Sample Ver : 1.1
 
 애플리케이션 실행 후 UI 노출 결과에 따른 기능
 - 권한 요청
@@ -15,4 +16,4 @@
   - 하단에 EditText 에 있는 텍스트를 음성으로 출력 (한국어 인식으로 설정된 상태)
 
 개발 블로그
-- 
+- https://mystic-agit.tistory.com/14
